@@ -15,5 +15,15 @@
   "bugs": {
     "url": "https://github.com/wh326520356/vuepritice/issues"
   },
-  "homepage": "https://github.com/wh326520356/vuepritice#readme"
+  "homepage": "https://github.com/wh326520356/vuepritice#readme",
+  "dependencies": {
+    "vue": "^2.6.10"
+  },
+  "devDependencies": {
+    "css-loader": "^2.1.1",
+    "html-webpack-plugin": "^3.2.0",
+    "less-loader": "^5.0.0",
+    "style-loader": "^0.23.1",
+    "webpack": "^4.31.0"
+  }
 }
