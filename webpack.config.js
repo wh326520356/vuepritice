@@ -22,7 +22,39 @@ module.exports = {
             {
                 test: /\.vue$/,
                 loader: 'vue-loader'
+            },{
+                test: /\.js$/,
+                loader: 'babel',
+                exclude: /node_module/,
+                query: {
+                    presets: ['es2015','stage-0'],
+                    plugins: ['transform-runtime']
+                }
+            },{
+                test: /\.css$/,
+                loader: ExtractTextPlugin.extract('style-loader','css-loader!autoprefixer-loader'),
+                exclude: /node_moudle/
+            },{
+                test: /\.less$/,
+                loader: ExtractTextPlugin.extract('style-loader','css-loader!autoprefixer-loader!less-loader'),
+                exclude: /node_moudle/
+            },{
+                test: /\.(jpg|png|gif)$/,
+                loader: 'url-loader',
+                query: {
+                    limit: 10000,
+                    name: './dist/style/img/[name].[ext]?[hash:7]'
+                }
+            },{
+                test: /\.(eot|woff|woff2|svg|ttf)([\?]?.*)/,
+                loader: 'file-loader',
+                query: {
+                    limit: 10000,
+                    name: './dist/style/font/[name].[ext]?[hash:7]',
+                    prefix: 'font'
+                }
             }
         ]
-    }
+    },
+    plugins: []
 }
