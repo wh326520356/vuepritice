@@ -1,7 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
-    entry: './src/index.js',
+    entry: './index.js',
     output: {
         path: path.resolve(__dirname, './dist'),
         filename: 'js/bundle.js'
@@ -28,7 +28,11 @@ module.exports = {
                     presets: ['es2015', 'stage-0'],
                     plugins: ['transform-runtime']
                 }
-            },
+            },{
+                test: /\.less$/,
+                loader: 'style-loader!css-loader!less-loader',
+                exclude: /node_module/
+            }
         ]
     },
     devServer: {
