@@ -8,6 +8,11 @@ export default new Router ({
             path: '/',
             name: 'app',
             component: resolve=>require(['../App.vue'],resolve)
+        },
+        {
+            path:'/home',
+            mame: 'home',
+            component: resolve=> require(['../components/Home.vue'],resolve)
         }
     ]
 })

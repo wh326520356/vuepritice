@@ -32,7 +32,7 @@ module.exports = {
                 }
             },{
                 test: /\.less$/,
-                loader: 'style-loader!css-loader!less-loader!less',
+                loader: 'style-loader!css-loader!less-loader',
                 exclude: /node_module/
             }
         ]

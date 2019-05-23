@@ -1,7 +1,8 @@
 <template>
-    <div class="example">
-        <!--<router-link></router-link>-->
-        <span>123</span>
+    <div>
+        <router-link to="home">123</router-link>
+        <!--<RouterView/>-->
+        <!--<span>123</span>-->
     </div>
 </template>
 
@@ -11,5 +12,5 @@
     }
 </script>
 
-<style scoped type="text/less">
+<style lang="less">
 </style>
