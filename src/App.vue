@@ -1,6 +1,7 @@
 <template>
-    <div>
-        123
+    <div class="example">
+        <!--<router-link></router-link>-->
+        <span>123</span>
     </div>
 </template>
 
@@ -10,6 +11,5 @@
     }
 </script>
 
-<style scoped>
-
+<style scoped type="text/less">
 </style>

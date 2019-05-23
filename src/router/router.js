@@ -4,5 +4,10 @@ Vue.use(Router);
 
 export default new Router ({
     routers: [
+        {
+            path: '/',
+            name: 'app',
+            component: resolve=>require(['../App.vue'],resolve)
+        }
     ]
 })
