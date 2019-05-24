@@ -3,12 +3,7 @@ import Vue from 'vue'
 Vue.use(Router);
 
 export default new Router ({
-    routers: [
-        {
-            path: '/',
-            name: 'app',
-            component: resolve=>require(['../App.vue'],resolve)
-        },
+    routes: [
         {
             path:'/home',
             mame: 'home',

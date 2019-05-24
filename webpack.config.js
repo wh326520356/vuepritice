@@ -2,7 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 module.exports = {
-    entry: './index.js',
+    entry: __dirname+'/index.js',
     output: {
         path: path.resolve(__dirname, './dist'),
         filename: 'js/bundle.js'
@@ -33,6 +33,10 @@ module.exports = {
             },{
                 test: /\.less$/,
                 loader: 'style-loader!css-loader!less-loader',
+                exclude: /node_module/
+            },{
+                test: /\.css$/,
+                loader: 'style-loader!css-loader',
                 exclude: /node_module/
             }
         ]

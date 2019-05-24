@@ -1,7 +1,7 @@
 <template>
     <div>
         <router-link to="home">123</router-link>
-        <!--<RouterView/>-->
+        <router-view></router-view>
         <!--<span>123</span>-->
     </div>
 </template>

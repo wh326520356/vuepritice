@@ -16,5 +16,8 @@
     height: 100px;
     background-color: #000000;
     color: #ffffff;
+    span{
+        color: yellow;
+    }
 }
 </style>
