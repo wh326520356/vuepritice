@@ -2,8 +2,9 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 module.exports = {
+    mode: "development",
     entry:{
-      app: ["babel-polyfill", __dirname+'/index.js']
+      main: ["babel-polyfill", __dirname+'/index.js']
     },
     output: {
         path: path.resolve(__dirname, './dist'),
