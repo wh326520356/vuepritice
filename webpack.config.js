@@ -1,14 +1,17 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 module.exports = {
     mode: "development",
     entry:{
       main: ["babel-polyfill", __dirname+'/index.js']
     },
     output: {
+        /*library: "mylibrary",
+        libraryTarget: "amd",*/
         path: path.resolve(__dirname, './dist'),
-        filename: 'js/bundle.js'
+        filename: 'js/[name].[hash]bundle.js'
     },
     plugins: [
         new HtmlWebpackPlugin({
@@ -17,7 +20,8 @@ module.exports = {
             filename: 'index.html',
             template: path.resolve(__dirname, 'index.html')
         }),
-        new VueLoaderPlugin()
+        new VueLoaderPlugin(),
+        new CleanWebpackPlugin()
     ],
     module: {
         rules: [
