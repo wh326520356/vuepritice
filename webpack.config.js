@@ -27,7 +27,6 @@ module.exports = {
         new VueLoaderPlugin(),
         new CleanWebpackPlugin(),
         new ExtractTextPlugin({
-            publicPath:'../',
             filename: 'css/[name].[hash:8].css',
             allChunks: true
         }),
