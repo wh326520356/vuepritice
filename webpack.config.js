@@ -24,7 +24,10 @@ module.exports = {
         }),
         new VueLoaderPlugin(),
         new CleanWebpackPlugin(),
-        new ExtractTextPlugin('css/[name].min.css')
+        new ExtractTextPlugin({
+            filename: 'css/[name].min.css',
+            allChunks: true
+        })
     ],
     module: {
         rules: [
@@ -41,25 +44,24 @@ module.exports = {
                     plugins: ['transform-runtime']
                 }
             },{
+                test: /\.css$/,
+                loader: 'style-loader!css-loader',
+                exclude: /node_module/
+            },{
                 test: /\.less$/,
                 /*该配置不自动刷新*/
                 /*loader: 'style-loader!css-loader!less-loader',*/
-                loader: ExtractTextPlugin.extract('style-loader','less-loader'),
-                /*use: ExtractTextPlugin.extract({
-                    fallBack: {loader: 'style-loader'},
+                /*loader: ExtractTextPlugin.extract('style-loader','css-loader!less'),*/
+                use: ExtractTextPlugin.extract({
                     use: [
                         {
-                            loader: 'css-loader!less-loader',
-                            options: {
-                                minimize: true
-                            }
+                            loader: 'css-loader'
+                        },{
+                            loader: 'less-loader'
                         }
-                    ]
-                }),*/
-                exclude: /node_module/
-            },{
-                test: /\.css$/,
-                loader: 'style-loader!css-loader',
+                    ],
+                    fallback: 'style-loader'
+                }),
                 exclude: /node_module/
             }
         ]
