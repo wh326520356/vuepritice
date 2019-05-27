@@ -3,6 +3,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const uglify = require('uglifyjs-webpack-plugin');
+const webpack = require('webpack');
 module.exports = {
     mode: "development",
     entry:{
@@ -12,7 +14,7 @@ module.exports = {
         /*library: "mylibrary",
         libraryTarget: "amd",*/
         path: path.resolve(__dirname, './dist'),
-        filename: 'js/[name].[hash]bundle.js',
+        filename: 'js/[name].[chunkhash].bundle.js',
         chunkFilename: "chunk/[name].[chunkhash].chunk.js"
     },
     plugins: [
@@ -25,10 +27,34 @@ module.exports = {
         new VueLoaderPlugin(),
         new CleanWebpackPlugin(),
         new ExtractTextPlugin({
-            filename: 'css/[name].min.css',
+            publicPath:'./dist/',
+            filename: 'css/[name].[hash:8].css',
             allChunks: true
+        }),
+        //已去除
+        /*new webpack.optimize.CommonsChunkPlugin({
+           names: ['main','manifest']
+        }),*/
+        new uglify(),
+        new webpack.LoaderOptionsPlugin({
+            options: {
+                postcss: function () {
+                    return [precss,autoprefixer];
+                }
+            }
         })
     ],
+    optimization: {
+        splitChunks:{
+            cacheGroups: {
+                commons: {
+                    test: /[\\/]node_modules[\\/]/,
+                    name: 'main',
+                    chunks: "all"
+                }
+            }
+        }
+    },
     module: {
         rules: [
             {
@@ -63,6 +89,13 @@ module.exports = {
                     fallback: 'style-loader'
                 }),
                 exclude: /node_module/
+            },{
+                test: /\.(png|jpg|gif)$/,
+                loader: 'url-loader',
+                options: {
+                    name: 'image/[name].[hash].[ext]',
+                    limit: 8192
+                }
             }
         ]
     },
