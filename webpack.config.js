@@ -27,7 +27,7 @@ module.exports = {
         new VueLoaderPlugin(),
         new CleanWebpackPlugin(),
         new ExtractTextPlugin({
-            publicPath:'./dist/',
+            publicPath:'../',
             filename: 'css/[name].[hash:8].css',
             allChunks: true
         }),
@@ -77,7 +77,9 @@ module.exports = {
                 test: /\.less$/,
                 /*该配置不自动刷新*/
                 /*loader: 'style-loader!css-loader!less-loader',*/
-                /*loader: ExtractTextPlugin.extract('style-loader','css-loader!less'),*/
+                /*loader: ExtractTextPlugin.extract('style-loader','css-loader!less-loader',{
+                    publicPath: '../'
+                 }),*/
                 use: ExtractTextPlugin.extract({
                     use: [
                         {
@@ -86,7 +88,8 @@ module.exports = {
                             loader: 'less-loader'
                         }
                     ],
-                    fallback: 'style-loader'
+                    fallback: 'style-loader',
+                    publicPath:"../"
                 }),
                 exclude: /node_module/
             },{
