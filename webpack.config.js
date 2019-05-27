@@ -2,6 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 module.exports = {
     mode: "development",
     entry:{
@@ -11,7 +12,8 @@ module.exports = {
         /*library: "mylibrary",
         libraryTarget: "amd",*/
         path: path.resolve(__dirname, './dist'),
-        filename: 'js/[name].[hash]bundle.js'
+        filename: 'js/[name].[hash]bundle.js',
+        chunkFilename: "chunk/[name].[chunkhash].chunk.js"
     },
     plugins: [
         new HtmlWebpackPlugin({
@@ -21,7 +23,8 @@ module.exports = {
             template: path.resolve(__dirname, 'index.html')
         }),
         new VueLoaderPlugin(),
-        new CleanWebpackPlugin()
+        new CleanWebpackPlugin(),
+        new ExtractTextPlugin('css/[name].min.css')
     ],
     module: {
         rules: [
@@ -39,7 +42,20 @@ module.exports = {
                 }
             },{
                 test: /\.less$/,
-                loader: 'style-loader!css-loader!less-loader',
+                /*该配置不自动刷新*/
+                /*loader: 'style-loader!css-loader!less-loader',*/
+                loader: ExtractTextPlugin.extract('style-loader','less-loader'),
+                /*use: ExtractTextPlugin.extract({
+                    fallBack: {loader: 'style-loader'},
+                    use: [
+                        {
+                            loader: 'css-loader!less-loader',
+                            options: {
+                                minimize: true
+                            }
+                        }
+                    ]
+                }),*/
                 exclude: /node_module/
             },{
                 test: /\.css$/,
@@ -54,6 +70,7 @@ module.exports = {
         }
     },
     devServer: {
+        contentBase: path.resolve(__dirname,"./dist"),
         port: 8080,
         historyApiFallback: true
     }

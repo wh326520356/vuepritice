@@ -1,12 +1,17 @@
 <template>
     <div class="home">
         <span>123</span>
+        <Button>点击</Button>
     </div>
 </template>
 
 <script>
+    import Button from "../common/wh-button.vue"
     export default {
-        name: "Home"
+        name: "Home",
+        components: {
+            Button
+        }
     }
 </script>
 
