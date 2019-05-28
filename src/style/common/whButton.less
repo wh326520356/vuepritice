@@ -1,8 +1,17 @@
-.buttonClass{
-  width: 80px;
-  height: 30px;
-  background: deepskyblue;
-  span{
-    color: #000000;
+#wh-button{
+  display: inline-block;
+  .buttonClass{
+    width: 80px;
+    height: 30px;
+    background: deepskyblue;
+    span{
+      color: #000000;
+    }
+  }
+  & button:focus,& button:active{
+    border: 1px solid cornflowerblue;
+    outline: 0;
   }
 }
+
+

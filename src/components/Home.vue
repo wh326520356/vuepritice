@@ -1,7 +1,7 @@
 <template>
     <div class="home">
         <span>123</span>
-        <Button>点击</Button>
+        <Button :buttonClass="homeButton">点击</Button>
     </div>
 </template>
 
@@ -11,20 +11,17 @@
         name: "Home",
         components: {
             Button
+        },
+        data() {
+            return {
+                homeButton: `home-button`
+            }
+        },
+        methods: {
+
         }
     }
 </script>
 
 <style lang="less">
-.home{
-    width: 100px;
-    height: 100px;
-   /* background-color: #000000;*/
-    color: #ffffff;
-    background-image: url("../style/image/dog.jpg");
-    background-size: 100% 100%;
-    span{
-        color: yellow;
-    }
-}
 </style>

@@ -1,7 +1,9 @@
 <template>
-    <button :disabled="disabled" :class="buttonClass">
-        <span><slot></slot></span>
-    </button>
+    <div id="wh-button">
+        <button @click="buttonClick" :disabled="disabled" :class="buttonClass">
+            <span><slot></slot></span>
+        </button>
+    </div>
 </template>
 
 <script>
@@ -15,6 +17,11 @@
             buttonClass: {
                 type: String,
                 default: `defaultButton`
+            }
+        },
+        methods: {
+            buttonClick: function (target) {
+                this.$emit(`click`,target);
             }
         }
     }
