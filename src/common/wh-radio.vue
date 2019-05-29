@@ -1,6 +1,11 @@
 <template>
     <div class="wh-radio">
-        <label><input v-model="radioValue" :name="name" type="radio"/><span></span><slot></slot></label>
+        <label>
+            <i class="wh-radio-style">
+                <input @change="getValue" :value="value" :name="name" type="radio"/>
+            </i>
+            <slot></slot>
+        </label>
     </div>
 </template>
 
@@ -11,15 +16,29 @@
             name: {
                 type: String,
                 default: ``
+            },
+            value: {
+                type: Object,
+                default: ``
             }
         },
         data() {
             return {
-
+                radioValue: ``,
+                whRadio: `wh-radio-style`,
+                checked: false
             }
         },
         computed: {
 
+        },
+        watch: {
+        },
+        methods: {
+            getValue: function (e){
+                this.checked = e.target.checked;
+                debugger;
+            }
         }
     }
 </script>

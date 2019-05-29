@@ -2,8 +2,8 @@
     <div class="home">
         <span>123</span>
         <Button :buttonClass="homeButton">点击</Button>
-        <Radio name="num">1</Radio>
-        <Radio name="num">2</Radio>
+        <Radio name="num" :value="1">1</Radio>
+        <Radio name="num" :value="2">2</Radio>
     </div>
 </template>
 

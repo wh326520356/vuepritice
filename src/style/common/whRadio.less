@@ -1,18 +1,26 @@
-.wh-radio{
+.wh-radio {
   display: inline-block;
-  & label{
-    cursor: pointer;
+  & label {
+    display: inline-block;
+    line-height: 38px;
   }
-  & span{
-    background-image: url("../image/radio.jpg");
-  }
-  & lable{
-    &>input{
-      width: 15px;
-      height: 15px;
-      vertical-align: bottom;
-      margin-right: .1em;
+  .wh-radio-style{
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background-image: url("../image/radio.png");
+    background-size: 100%;
+    vertical-align: sub;
+    & input{
+      display: block;
       opacity: 0;
+      cursor: pointer;
+      widht: 100%;
+      height: 100%;
+      margin: 0;
     }
+  }
+  .checked{
+    background-image:url("../image/radio-checked.png");
   }
 }
