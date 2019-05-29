@@ -2,8 +2,8 @@
     <div class="home">
         <span>123</span>
         <Button :buttonClass="homeButton">点击</Button>
-        <Radio name="num" :value="1">1</Radio>
-        <Radio name="num" :value="2">2</Radio>
+        <Radio name="num" v-model="radioValue" :value="1" @change="getValue">1</Radio>
+        <Radio name="num" v-model="radioValue" :value="2" @change="getValue">2</Radio>
     </div>
 </template>
 
@@ -18,11 +18,14 @@
         },
         data() {
             return {
-                homeButton: `home-button`
+                homeButton: `home-button`,
+                radioValue: ``
             }
         },
         methods: {
-
+            getValue: function (value) {
+                this.radioValue = value;
+            }
         }
     }
 </script>

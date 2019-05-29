@@ -1,10 +1,10 @@
 <template>
     <div class="wh-radio">
         <label>
-            <i class="wh-radio-style">
+            <i :class="model==value?'wh-radio-style checked':'wh-radio-style'">
                 <input @change="getValue" :value="value" :name="name" type="radio"/>
             </i>
-            <slot></slot>
+            <span><slot></slot></span>
         </label>
     </div>
 </template>
@@ -12,21 +12,29 @@
 <script>
     export default {
         name: "Radio",
+        model: {
+          prop: 'model'
+        },
         props: {
             name: {
-                type: String,
+                type: [String,Number],
                 default: ``
             },
             value: {
-                type: Object,
+                type: [String,Number],
                 default: ``
+            },
+            model: {
+                type: [String,Number],
+                require: true
             }
         },
         data() {
             return {
                 radioValue: ``,
                 whRadio: `wh-radio-style`,
-                checked: false
+                checked: false,
+                currentValue: ``
             }
         },
         computed: {
@@ -36,8 +44,7 @@
         },
         methods: {
             getValue: function (e){
-                this.checked = e.target.checked;
-                debugger;
+                this.$emit(`change`,e.target.value);
             }
         }
     }
