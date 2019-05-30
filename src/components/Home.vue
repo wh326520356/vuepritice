@@ -4,25 +4,26 @@
         <Button :buttonClass="homeButton">点击</Button>
         <Radio name="num" v-model="radioValue" :value="1" @change="getValue">1</Radio>
         <Radio name="num" v-model="radioValue" :value="2" @change="getValue">2</Radio>
-        <Input/>
+        <whInput :width="'200px'" :class="inputClass" :height="'50px'"></whInput>
     </div>
 </template>
 
 <script>
     import Radio from "../common/wh-radio.vue"
     import Button from "../common/wh-button.vue"
-    import Input from "../common/wh-input.vue"
+    import whInput from "../common/wh-input.vue"
     export default {
         name: "Home",
         components: {
             Button,
             Radio,
-            Input
+            whInput
         },
         data() {
             return {
                 homeButton: `home-button`,
-                radioValue: ``
+                radioValue: ``,
+                inputClass: `inputStyle`
             }
         },
         methods: {
