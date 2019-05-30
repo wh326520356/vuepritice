@@ -1,6 +1,8 @@
 <template>
     <div id="wh-input">
-        <label><input :class="inputClass" :style="{width:width,height: height}" type="text" @onchange="getValue"/></label>
+        <label>
+            <input @input="getValue" :class="inputClass" :style="{width:width,height: height}" type="text" @onchange="getValue"/>
+        </label>
     </div>
 </template>
 
@@ -28,8 +30,7 @@
         },
         methods: {
             getValue: function (e) {
-                debugger;
-                this.text = e.target.value;
+                this.$emit("input",e.target.value)
             }
         }
     }

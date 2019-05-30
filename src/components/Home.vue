@@ -4,7 +4,7 @@
         <Button :buttonClass="homeButton">点击</Button>
         <Radio name="num" v-model="radioValue" :value="1" @change="getValue">1</Radio>
         <Radio name="num" v-model="radioValue" :value="2" @change="getValue">2</Radio>
-        <whInput :width="'200px'" :class="inputClass" :height="'50px'"></whInput>
+        <whInput :width="'200px'" @input="getInputValue" :inputClass="inputClass" :height="'50px'"></whInput>
     </div>
 </template>
 
@@ -29,6 +29,9 @@
         methods: {
             getValue: function (value) {
                 this.radioValue = value;
+            },
+            getInputValue: function (val) {
+                debugger;
             }
         }
     }
