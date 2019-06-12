@@ -1,7 +1,7 @@
 <template>
     <div id="wh-button">
         <button @click="buttonClick" :disabled="disabled" :class="buttonClass">
-            <span><slot></slot></span>
+            <span><slot name="buttonName"></slot></span>
         </button>
     </div>
 </template>
