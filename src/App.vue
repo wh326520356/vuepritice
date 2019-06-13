@@ -1,7 +1,10 @@
 <template>
     <div>
         <router-link to="home">123</router-link>
-        <router-view></router-view>
+        <router-link to="test">test</router-link>
+        <keep-alive>
+            <router-view></router-view>
+        </keep-alive>
         <!--<span>123</span>-->
     </div>
 </template>

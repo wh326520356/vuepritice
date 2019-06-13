@@ -1,6 +1,6 @@
 <template>
     <div class="home">
-        <span>123</span>
+       <!-- <span>123</span>
         <Button :buttonClass="homeButton">
             <template slot="buttonName">
                 <span>点击</span>
@@ -14,7 +14,9 @@
         <button @click="changeCount">改变</button><br/>
         <div>
             <span>{{data|showData}}</span>
-        </div>
+        </div>-->
+        <div>{{$store.state.count}}</div>
+        <div>{{$store.getters.countSum}}</div>
     </div>
 </template>
 
@@ -59,6 +61,7 @@
         },
         filters: {
             showData: function(value) {
+                debugger
                 for (let i = 0;i<value.length;i++) {
                     if (value[i].value>1) {
                         return value[i].value
